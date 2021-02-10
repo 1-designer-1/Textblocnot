@@ -38,7 +38,7 @@ namespace Textblocnot
                 if (result == DialogResult.Yes)
                 {
                     if (ASaveNoteBook() == false) return;
-                }
+                }  
                 if (result == DialogResult.Cancel) return;
             }
             fieldEdit.Clear();
