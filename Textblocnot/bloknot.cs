@@ -66,7 +66,7 @@ namespace Textblocnot
             nameFile = "";
             fieldEdit.Modified = false;
         }
-        
+
         /// <summary>
         /// Открывает текстовый документ
         /// </summary>
@@ -116,7 +116,7 @@ namespace Textblocnot
         }
 
 
-        private void ShowSavig()
+        public void ShowSavig()
         {
             DialogResult result = MessageBox.Show("Вы хотите сохранить изменения в файле?", "Блокнот", MessageBoxButtons.YesNoCancel);
             if (result == DialogResult.Yes)
@@ -128,6 +128,7 @@ namespace Textblocnot
                 return;
             }
         }
+
         public void ShowSaving(ref bool exit)
         {
             DialogResult result = MessageBox.Show("Вы хотите сохранить изменения в файле?", "Блокнот", MessageBoxButtons.YesNoCancel);
@@ -141,20 +142,29 @@ namespace Textblocnot
             }
         }
 
+        /// <summary>
+        /// Сохранить
+        /// </summary>
+        /// <param name="formText"></param>
         public void Save(ref string formText)
         {
 
             if (ASaveNoteBook() == true)
             {
-                formText = nameFile + " - " + "Notebook";
+                formText = nameFile + " - " + "Блокнот";
             }
         }
+
+        /// <summary>
+        /// Сохранить как 
+        /// </summary>
+        /// <param name="formText"></param>
         public void SaveAs(ref string formText)
         {
             nameFile = "";
             if (ASaveNoteBook() == true)
             {
-                formText = nameFile + " - " + "Notebook";
+                formText = nameFile + " - " + "Блокнот";
             }
         }
 

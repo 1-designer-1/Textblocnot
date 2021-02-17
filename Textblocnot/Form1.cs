@@ -14,7 +14,7 @@ namespace Textblocnot
     public partial class Form1 : Form
     {
         Bloknot Bloknot;
-        public string title = "" + " - " + "Notebook";
+        public string title = "" + " - " + "Блокнот";
         public Form1()
         {
             InitializeComponent();
@@ -25,7 +25,7 @@ namespace Textblocnot
         private void СоздатьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Bloknot.Create();
-            this.Text = Bloknot.Namefile;
+            this.Text = "" + " - " + "Блокнот";
         }
 
         private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -45,7 +45,6 @@ namespace Textblocnot
             Bloknot.OpenFile();
             this.Text = title;
         }
-
 
         private void копироватьToolStripMenuItem_Click(object sender, EventArgs e)
         {
