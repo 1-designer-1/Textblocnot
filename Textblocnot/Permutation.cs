@@ -19,11 +19,10 @@ namespace Textblocnot
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if ((int)numericUpDown1.Value == (int) numericUpDown2.Value)
+            if ((int)numericUpDown1.Value == (int)numericUpDown2.Value)
             {
                 MessageBox.Show("Значение строк должно быть разное", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else 
         }
     }
 }
