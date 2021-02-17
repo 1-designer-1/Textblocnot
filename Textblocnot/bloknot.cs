@@ -8,13 +8,14 @@ using System.IO;
 
 namespace Textblocnot
 {
-    class Bloknot
+    public class Bloknot
     {
         string nameFile;
         RichTextBox fieldEdit;
         public string Namefile
         {
             get { return nameFile; }
+
         }
 
         public Bloknot(RichTextBox fieldEdit)
@@ -23,6 +24,10 @@ namespace Textblocnot
             this.fieldEdit = fieldEdit;
         }
 
+        /// <summary>
+        /// Сохранение блокнота в файл
+        /// </summary>
+        /// <returns></returns>
         public bool ASaveNoteBook()
         {
             SaveFileDialog sd = new SaveFileDialog();
@@ -40,6 +45,10 @@ namespace Textblocnot
             fieldEdit.Modified = false;
             return true;
         }
+
+        /// <summary>
+        /// Создает новый документ
+        /// </summary>
         public void Create()
         {
             if (fieldEdit.Modified == true)
@@ -57,22 +66,31 @@ namespace Textblocnot
             nameFile = "";
             fieldEdit.Modified = false;
         }
-
-        public void OpenFile()
+        
+        /// <summary>
+        /// Открывает текстовый документ
+        /// </summary>
+        public bool OpenFile()
         {
             OpenFileDialog op = new OpenFileDialog();
             op.DefaultExt = "*.rtf";
             op.Filter = "Документ RTF|*.rtf|Все файлы|*.*";
             if (op.ShowDialog() == DialogResult.OK)
             {
-                StreamReader file = new StreamReader(op.FileName);
+
                 nameFile = op.FileName;
-                fieldEdit.Text = file.ReadLine();
-                file.Close();
+                fieldEdit.LoadFile(Namefile);
+                fieldEdit.Modified = false;
+                return true;
             }
+            else return false;
 
         }
 
+        /// <summary>
+        /// Сохранение документа
+        /// </summary>
+        /// <returns></returns>
         public bool SaveFile()
         {
             SaveFileDialog save = new SaveFileDialog();
@@ -87,6 +105,57 @@ namespace Textblocnot
             }
             fieldEdit.Modified = false;
             return true;
+        }
+
+        public void Exit(ref bool exit)
+        {
+            if (fieldEdit.Modified == true)
+            {
+                ShowSaving(ref exit);
+            }
+        }
+
+
+        private void ShowSavig()
+        {
+            DialogResult result = MessageBox.Show("Вы хотите сохранить изменения в файле?", "Блокнот", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Yes)
+            {
+                if (ASaveNoteBook() == false) return;
+            }
+            if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+        }
+        public void ShowSaving(ref bool exit)
+        {
+            DialogResult result = MessageBox.Show("Вы хотите сохранить изменения в файле?", "Блокнот", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Yes)
+            {
+                if (ASaveNoteBook() == false) exit = false;
+            }
+            if (result == DialogResult.Cancel)
+            {
+                exit = true; ;
+            }
+        }
+
+        public void Save(ref string formText)
+        {
+
+            if (ASaveNoteBook() == true)
+            {
+                formText = nameFile + " - " + "Notebook";
+            }
+        }
+        public void SaveAs(ref string formText)
+        {
+            nameFile = "";
+            if (ASaveNoteBook() == true)
+            {
+                formText = nameFile + " - " + "Notebook";
+            }
         }
 
     }
