@@ -99,6 +99,7 @@ namespace Textblocnot
         {
             bool exit = false;
             Bloknot.Exit(ref exit);
+            Close();
         }
     }
 }
