@@ -8,7 +8,7 @@ using System.IO;
 
 namespace Textblocnot
 {
-    public class Bloknot
+    public class Bloknot 
     {
         string nameFile;
         string box;
