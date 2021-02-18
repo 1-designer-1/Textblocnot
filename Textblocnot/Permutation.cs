@@ -23,6 +23,19 @@ namespace Textblocnot
             {
                 MessageBox.Show("Значение строк должно быть разное", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else
+            {
+                Rows.resolution = true;
+                Rows.firstRow = (int)numericUpDown1.Value;
+                Rows.secondRow = (int)numericUpDown2.Value;
+               this.Close();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Rows.resolution = false;
+            this.Close();
         }
     }
 }

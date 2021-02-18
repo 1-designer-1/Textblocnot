@@ -101,5 +101,14 @@ namespace Textblocnot
             Bloknot.Exit(ref exit);
             Close();
         }
+
+        private void переместитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Permutation permutation = new Permutation();
+            Rows.resolution = false;
+            permutation.ShowDialog();
+            Bloknot.Permutation();
+        }
     }
+
 }

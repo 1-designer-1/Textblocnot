@@ -11,6 +11,7 @@ namespace Textblocnot
     public class Bloknot
     {
         string nameFile;
+        string box;
         RichTextBox fieldEdit;
         public string Namefile
         {
@@ -167,6 +168,35 @@ namespace Textblocnot
                 formText = nameFile + " - " + "Блокнот";
             }
         }
+
+        public void Permutation()
+        {
+            if(Rows.resolution == true)
+            {
+                try
+                {
+                    string[] array = fieldEdit.Lines;
+                    box = array[Rows.firstRow - 1];
+                    array[Rows.firstRow - 1] = array[Rows.secondRow - 1];
+                    array[Rows.secondRow - 1] = box;
+                    fieldEdit.Lines = array;
+                    fieldEdit.Modified = true;
+
+                }
+                catch
+                {
+                    MessageBox.Show("Строки не существует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+    }
+
+    public class Rows
+    {
+        public static int firstRow;
+        public static int secondRow;
+        public static bool resolution;
 
     }
 }
